@@ -1,0 +1,3 @@
+SELECT COUNT(*) FROM dose WHERE availability='a';
+SELECT DISTINCT phonenumber FROM  customer, vaccination WHERE phonenumber=cphone AND age=(SELECT MAX(age) FROM customer WHERE currentdose=(SELECT MIN(currentdose) FROM vaccination)) ORDER BY RAND() LIMIT 1;
+SELECT DISTINCT phonenumber FROM waitlist, customer, vaccination WHERE phonenumber=cphonenr AND age=(SELECT MAX(age) FROM customer JOIN waitlist on phonenumber=cphonenr WHERE currentdose=(SELECT MIN(currentdose) FROM vaccination)) ORDER BY RAND() LIMIT 1;
